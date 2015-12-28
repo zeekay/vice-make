@@ -5,6 +5,14 @@ func! vice#make#neomake#enable()
         \ ]
     \ })
 
+    let g:neomake_go_gofmt_maker = {
+        \ 'exe': 'gofmt',
+        \ 'args': ['-l'],
+        \ 'errorformat':
+            \ '%f:%l:%c: %m,' .
+            \ '%-G%.%#'
+    \ }
+
     let g:neomake_go_gobuild_maker = {
         \ 'exe': 'sh',
         \ 'args': ['-c', 'go build -o /dev/null ./\$0', '%:h'],
@@ -16,11 +24,22 @@ func! vice#make#neomake#enable()
             \ '%-G#%.%#'
     \ }
 
-    let g:neomake_go_enabled_makers = ['gobuild']
+    let g:neomake_go_enabled_makers = ['gofmt', 'gobuild']
     let g:neomake_open_list = 2
     let g:neomake_list_height = 10
     let g:neomake_verbose = 0
     let g:neomake_airline = 0
 
     autocmd! BufWritePost * Neomake
+    autocmd BufWinEnter,CursorHold * call vice#make#neomake#statusline()
+endf
+
+func! vice#make#neomake#statusline()
+    if !exists('lightline#update')
+        return
+    endif
+
+    if neomake#statusline#LoclistStatus() != ""
+        call lightline#update()
+    endif
 endf
