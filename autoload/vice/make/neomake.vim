@@ -20,6 +20,7 @@ func! vice#make#neomake#enable()
     let g:neomake_open_list = 2
     let g:neomake_list_height = 10
     let g:neomake_verbose = 0
+    let g:neomake_airline = 0
 
     autocmd! BufWritePost * Neomake
 endf

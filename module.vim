@@ -13,10 +13,6 @@ if !exists('g:vice.make.hooks')
     let g:vice.make.hooks = []
 endif
 
-if !exists('g:vice.make.syntastic')
-    let g:vice.make.syntastic = {}
-endif
-
 let g:vice.make.jshint_args = '--config '.g:vice.addon_dir.'/jshint.json'
 
 " Use neomake with neovim
@@ -31,3 +27,7 @@ au BufEnter coffee,javascript call vice#make#find_jshintrc()
 
 " Prevent quickfix from popping up on wq and blocking exit
 au WinEnter * if &buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
+
+if v:version > 703 || (v:version == 703 && has('patch544'))
+    au QuitPre * call vice#make#quit()
+endif
