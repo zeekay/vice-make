@@ -88,7 +88,4 @@ func! vice#make#syntastic#enable()
 
     au filetype python     command! -buffer Pylint SyntasticCheck pylint
     au filetype javascript command! -buffer Jslint SyntasticCheck jslint
-
-    " Prevent Syntastic from popping up on wq and blocking exit
-    au WinEnter * if &buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
 endf

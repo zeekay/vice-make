@@ -28,3 +28,6 @@ endif
 
 " Find local jshintrc automatically
 au BufEnter coffee,javascript call vice#make#find_jshintrc()
+
+" Prevent quickfix from popping up on wq and blocking exit
+au WinEnter * if &buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
