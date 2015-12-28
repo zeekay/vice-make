@@ -1,29 +1,28 @@
-func! vice#make#syntastic#quitting()
-    let g:vice.make.syntastic.quitting = 1
-endf
-
 func! vice#make#syntastic#check()
-    if exists('g:vice.make.syntastic.quitting')
+    if vice#make#quitting()
         return
     endif
 
     SyntasticCheck
+
     for hook in g:vice.make.hooks
         exe 'call '.hook.'()'
     endfor
+
     redraw!
 endf
 
 " Disable autocommand to enable syntastic and do check
 func! vice#make#syntastic#enable_check()
-    if exists('g:vice.make.syntastic.quitting')
+    if vice#make#quitting()
         return
     endif
 
-    augroup vice_syntastic
+    augroup vice_make
         au!
         au BufWritePost * call vice#make#syntastic#check()
     augroup END
+
     call vice#ForceActivateAddon('github:scrooloose/syntastic')
     call vice#make#syntastic#check()
 endf
@@ -34,7 +33,7 @@ func! vice#make#syntastic#enable()
     " let g:syntastic_mode_map                    = {"mode": "passive"}
     let g:syntastic_always_populate_loc_list    = 1
     let g:syntastic_aggregate_errors            = 1
-    let g:syntastic_auto_loc_list               = 1
+    let g:syntastic_auto_loc_list               = 2
     let g:syntastic_check_on_open               = 0
     let g:syntastic_check_on_wq                 = 0
     let g:syntastic_enable_highlighting         = 0
@@ -77,15 +76,11 @@ func! vice#make#syntastic#enable()
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_command       = "goimports"
 
-    augroup vice_syntastic
-        au!
-        au BufWrite * call vice#make#syntastic#enable_check()
-
-        if v:version > 703 || (v:version == 703 && has('patch544'))
-            au QuitPre * call vice#make#syntastic#quitting()
-        endif
-    augroup END
-
     au filetype python     command! -buffer Pylint SyntasticCheck pylint
     au filetype javascript command! -buffer Jslint SyntasticCheck jslint
+
+    augroup vice_make
+        au!
+        au BufWrite * call vice#make#syntastic#enable_check()
+    augroup END
 endf
