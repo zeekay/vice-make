@@ -15,9 +15,11 @@ func! vice#make#neomake#enable()
             \ '%C%\s%\+%m,' .
             \ '%-G#%.%#'
     \ }
+
     let g:neomake_go_enabled_makers = ['gobuild']
     let g:neomake_open_list = 2
     let g:neomake_list_height = 10
+    let g:neomake_verbose = 0
 
     autocmd! BufWritePost * Neomake
 endf
