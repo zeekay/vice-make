@@ -40,10 +40,8 @@ func! vice#make#syntastic#enable()
     let g:syntastic_stl_format                  = 'line %F, 1 of %t'
     let g:syntastic_enable_signs                = 1
     let g:syntastic_error_symbol                = '!'
-    let g:syntastic_style_error_symbol          = '>'
-    let g:syntastic_style_error_symbol          = '› '
-    let g:syntastic_style_warning_symbol        = '› '
     let g:syntastic_warning_symbol              = '.'
+    let g:syntastic_loc_list_height             = 5
 
     " CSS
     let g:syntastic_csslint_options             = '--ignore = ids'
