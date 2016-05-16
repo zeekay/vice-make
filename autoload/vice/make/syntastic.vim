@@ -70,6 +70,12 @@ func! vice#make#syntastic#enable()
     let g:syntastic_python_flake8_args = '--ignore=E127,E221,E223,E224,E225,E226,E231,E241,E251,E271,E272,E302,E303,W391,E501,E702,E711'
     let g:syntastic_python_pylint_args = '-d C0103,C0111,C0301,C0326,W0403,R0903'
 
+    " Go
+    " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+    let g:syntastic_go_checkers = ['go', 'govet', 'errcheck']
+    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+    let g:go_list_type = "quickfix"
+
     au filetype python     command! -buffer Pylint SyntasticCheck pylint
     au filetype javascript command! -buffer Jslint SyntasticCheck jslint
 
