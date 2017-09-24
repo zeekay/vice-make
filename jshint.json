@@ -2,7 +2,7 @@
   "asi":          true,
   "boss":         true,
   "browser":      true,
-  "camelcase":    true,
+  "camelcase":    false,
   "curly":        false,
   "devel":        true,
   "eqnull":       true,
