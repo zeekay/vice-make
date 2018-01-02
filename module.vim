@@ -17,15 +17,10 @@ if !exists('g:vice.make.jshintrc')
     let g:vice.make.jshintrc = g:vice.addon_dir.'/jshint.json'
 endif
 
-if !exists('g:vice.make.neomake_enabled')
-    " Use neomake with neovim
-    let g:vice.make.neomake_enabled = has('nvim')
-endif
-
-if vice.make.neomake_enabled
-    call vice#make#neomake#enable()
-else
+if v:version < 800
     call vice#make#syntastic#enable()
+else
+    call vice#make#ale#enable()
 endif
 
 " Go
