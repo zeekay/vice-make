@@ -6,7 +6,7 @@ func! vice#make#ale#enable()
         \ ]
     \ })
 
-    let g:ale_linters = {'go': ['gofmt', 'goimports', 'go build', 'go vet']}
+    let g:ale_linters = {'go': ['gofmt', 'goimports', 'go build', 'go vet', 'staticcheck']}
 
     if !exists('g:lightline')
         let g:lightline = {}
