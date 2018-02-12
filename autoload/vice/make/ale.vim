@@ -11,7 +11,7 @@ func! vice#make#ale#enable()
         \ 'python': ['flake8'],
     \ }
 
-    let g:ale_python_flake8_args = '--ignore=E501'
+    let g:ale_python_flake8_args = '--ignore=E501,E221'
 
     if !exists('g:lightline')
         let g:lightline = {}
