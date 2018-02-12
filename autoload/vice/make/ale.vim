@@ -6,7 +6,12 @@ func! vice#make#ale#enable()
         \ ]
     \ })
 
-    let g:ale_linters = {'go': ['gofmt', 'goimports', 'go build', 'go vet', 'staticcheck']}
+    let g:ale_linters = {
+        \ 'go': ['gofmt', 'goimports', 'go build', 'go vet', 'staticcheck'],
+        \ 'python': ['flake8'],
+    \ }
+
+    let g:ale_python_flake8_args = '--ignore=E501'
 
     if !exists('g:lightline')
         let g:lightline = {}
