@@ -1,9 +1,3 @@
-call vice#Extend({
-    \ 'addons': [
-        \ 'github:zeekay/QuickFixCurrentNumber',
-    \ ]
-\ })
-
 " Defaults
 if !exists('g:vice.make')
     let g:vice.make = {}
