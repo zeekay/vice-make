@@ -2,9 +2,9 @@ func! vice#make#ale#enable()
     let g:ale_history_enabled         = 1
     let g:ale_history_log_output      = 1
     let g:ale_max_buffer_history_size = 1
-    let g:ale_lint_on_insert_leave    = 1
-    let g:ale_lint_on_save            = 1
+    let g:ale_lint_on_insert_leave    = 0
     let g:ale_lint_on_text_changed    = 0
+    let g:ale_lint_on_save            = 1
     let g:ale_open_list               = 'on_save'
     let g:ale_set_quickfix            = 1
     let g:ale_set_signs               = 1
