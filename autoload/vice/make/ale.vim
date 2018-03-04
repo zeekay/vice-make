@@ -22,7 +22,7 @@ func! vice#make#ale#enable()
         \ 'python': ['flake8'],
     \ }
 
-    let g:ale_python_flake8_args = '--ignore=E501,E221'
+    let g:ale_python_flake8_args = '--ignore=E501,E241,E221'
 
     call vice#Extend({
         \ 'addons': [
