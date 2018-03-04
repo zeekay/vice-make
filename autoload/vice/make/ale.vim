@@ -19,7 +19,9 @@ func! vice#make#ale#enable()
 
     let g:ale_linters = {
         \ 'go': ['gofmt', 'goimports', 'go build', 'go vet', 'staticcheck'],
+        \ 'javascript': ['jshint', 'prettier', 'jscs'],
         \ 'python': ['flake8'],
+        \ 'typescript': ['prettier', 'tslint', 'tsserver', 'typecheck'],
     \ }
 
     let g:ale_python_flake8_args = '--ignore=E501,E241,E221'

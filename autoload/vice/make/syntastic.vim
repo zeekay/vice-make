@@ -76,10 +76,6 @@ func! vice#make#syntastic#enable()
     let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
     let g:go_list_type = "quickfix"
 
-    " Typescript
-    let g:tsuquyomi_disable_quickfix = 1
-    let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-
     au filetype python     command! -buffer Pylint SyntasticCheck pylint
     au filetype javascript command! -buffer Jslint SyntasticCheck jslint
 
