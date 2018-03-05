@@ -11,10 +11,14 @@ if !exists('g:vice.make.jshintrc')
     let g:vice.make.jshintrc = vice#make#find_jshintrc()
 endif
 
-if v:version >= 800
-    call vice#make#ale#enable()
+if exists('g:vice.make.plugin')
+    exe 'call vice#make#'.g:vice.make.plugin.'#enable()'
 else
-    call vice#make#syntastic#enable()
+    if v:version >= 800
+        call vice#make#ale#enable()
+    else
+        call vice#make#syntastic#enable()
+    endif
 endif
 
 " Go
