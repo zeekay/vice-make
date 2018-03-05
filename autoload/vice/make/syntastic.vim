@@ -64,6 +64,7 @@ func! vice#make#syntastic#enable()
     " JavaScript
     let g:syntastic_javascript_checkers    = ['jshint']
     let g:syntastic_javascript_jslint_args = '--browser --node --vars --plusplus'
+    let g:syntastic_javascript_jshint_args = '--config '.g:vice.make.jshintrc
 
     " Python
     let g:syntastic_python_checkers    = ['flake8']
@@ -75,6 +76,12 @@ func! vice#make#syntastic#enable()
     let g:syntastic_go_checkers = ['go', 'govet', 'errcheck']
     let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
     let g:go_list_type = "quickfix"
+
+    " Typescript
+    if !has('nvim')
+        let g:tsuquyomi_disable_quickfix = 1
+        let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+    endif
 
     au filetype python     command! -buffer Pylint SyntasticCheck pylint
     au filetype javascript command! -buffer Jslint SyntasticCheck jslint

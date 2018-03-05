@@ -9,16 +9,7 @@ endf
 func! vice#make#find_jshintrc()
     let jshintrc = findfile('.jshintrc', '.;')
     if jshintrc == ""
-        let jshintrc = g:vice.make.jshintrc
+        let jshintrc = g:vice.addon_dir.'/jshint.json'
     endif
-
-    let g:syntastic_javascript_jshint_args = '--config '.jshintrc
-    let g:neomake_javascript_jshint_maker = {
-        \ 'args': [
-            \ '--verbose',
-            \ '--config',
-            \ jshintrc
-        \ ],
-        \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
+    return jshintrc
 endf
