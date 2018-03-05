@@ -27,6 +27,14 @@ func! vice#make#neomake#enable()
     let g:neomake_go_enabled_makers         = ['gofmt', 'gobuild']
     let g:neomake_javascript_enabled_makers = ['jshint']
     let g:neomake_python_enabled_makers     = ['flake8']
+    let g:neomake_javascript_jshint_maker = {
+        \ 'args': [
+            \ '--verbose',
+            \ '--config',
+            \ g:vice.make.jshintrc
+        \ ],
+        \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
 
     let g:neomake_open_list   = 2
     let g:neomake_list_height = 5
