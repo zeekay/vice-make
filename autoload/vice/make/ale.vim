@@ -21,7 +21,7 @@ func! vice#make#ale#enable()
 
     let g:ale_linters = {
         \ 'go':         ['gofmt', 'goimports', 'go build', 'go vet', 'staticcheck'],
-        \ 'javascript': ['jshint', 'prettier', 'jscs'],
+        \ 'javascript': ['eslint', 'prettier', 'jscs'],
         \ 'python':     ['flake8'],
         \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
     \ }
