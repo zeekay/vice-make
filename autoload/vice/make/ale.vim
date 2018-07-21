@@ -24,6 +24,7 @@ func! vice#make#ale#enable()
         \ 'javascript': ['eslint', 'prettier', 'jscs'],
         \ 'python':     ['flake8'],
         \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
+        \ 'solidity':   [],
     \ }
 
     let g:ale_python_flake8_args = '--ignore=E501,E241,E221'
