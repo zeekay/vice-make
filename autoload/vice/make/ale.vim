@@ -20,13 +20,13 @@ func! vice#make#ale#enable()
     " highlight clear ALEWarningSign
 
     let g:ale_linters = {
+        \ 'go':         ['goimports', 'go build', 'go vet'],
         \ 'javascript': ['eslint', 'prettier', 'jscs'],
         \ 'python':     ['flake8'],
         \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
         \ 'solidity':   [],
     \ }
 
-    " go: ['gofmt', 'goimports', 'go build', 'go vet', 'staticcheck'],
 
     let g:ale_python_flake8_args = '--ignore=E501,E241,E221'
     let g:ale_jshint_config_loc = g:vice.make.jshintrc
