@@ -24,12 +24,16 @@ func! vice#make#ale#enable()
         \ 'javascript': ['eslint', 'prettier', 'jscs'],
         \ 'python':     ['flake8'],
         \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
-        \ 'solidity':   [],
+        \ 'solidity':   ['solc'],
     \ }
 
-
-    let g:ale_python_flake8_args = '--ignore=E501,E241,E221'
     let g:ale_jshint_config_loc = g:vice.make.jshintrc
+    let g:ale_python_flake8_args = '--ignore=E501,E241,E221'
+    let g:ale_solidity_solc_options = '--allow-paths=. @chainlink=./node_modules/@chainlink @openzeppelin=./node_modules/@openzeppelin'
+
+    call deoplete#custom#option('sources', {
+        \ '_': ['ale'],
+    \})
 
     call vice#Extend({
         \ 'addons': [
