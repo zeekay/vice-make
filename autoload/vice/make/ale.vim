@@ -31,9 +31,9 @@ func! vice#make#ale#enable()
     let g:ale_python_flake8_args = '--ignore=E501,E241,E221'
     let g:ale_solidity_solc_options = '--allow-paths=. @luxdefi=../node_modules/@luxdefi @chainlink=../node_modules/@chainlink @openzeppelin=../node_modules/@openzeppelin'
 
-    call deoplete#custom#option('sources', {
-        \ '_': ['ale'],
-    \})
+    " call deoplete#custom#option('sources', {
+    "     \ '_': ['ale'],
+    " \})
 
     call vice#Extend({
         \ 'addons': [
