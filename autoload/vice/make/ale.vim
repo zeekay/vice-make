@@ -40,4 +40,6 @@ func! vice#make#ale#enable()
             \ 'github:dense-analysis/ale',
         \ ]
     \ })
+
+    command Errors copen
 endf
