@@ -38,7 +38,6 @@ func! vice#make#ale#enable()
     call vice#Extend({
         \ 'addons': [
             \ 'github:dense-analysis/ale',
-            \ 'github:maximbaz/lightline-ale',
         \ ]
     \ })
 endf
