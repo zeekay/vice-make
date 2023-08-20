@@ -51,16 +51,5 @@ func! vice#make#neomake#enable()
     \ }
 
     autocmd! BufWritePost * Neomake
-    autocmd BufWinEnter,CursorHold * call vice#make#neomake#statusline()
     command Errors lopen
-endf
-
-func! vice#make#neomake#statusline()
-    if !exists('lightline#update')
-        return
-    endif
-
-    if neomake#statusline#LoclistStatus() != ""
-        call lightline#update()
-    endif
 endf
