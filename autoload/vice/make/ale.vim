@@ -1,3 +1,11 @@
+func! vice#make#ale#toggle_quickfix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endf
+
 func! vice#make#ale#enable()
     let g:ale_history_enabled         = 0
     let g:ale_history_log_output      = 0
@@ -42,4 +50,6 @@ func! vice#make#ale#enable()
     \ })
 
     command Errors copen
+
+    nnoremap <leader>e :call vice#make#ale#toggle_quickfix()<cr>
 endf
