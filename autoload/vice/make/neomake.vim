@@ -1,3 +1,11 @@
+func! vice#make#neomake#toggle_loclist()
+    if empty(filter(getwininfo(), 'v:val.loclist'))
+        lopen
+    else
+        lclose
+    endif
+endf
+
 func! vice#make#neomake#enable()
     call vice#Extend({
         \ 'addons': [
@@ -52,4 +60,6 @@ func! vice#make#neomake#enable()
 
     autocmd! BufWritePost * Neomake
     command Errors lopen
+
+    nnoremap <leader>e :call vice#make#neomake#toggle_loclist()<cr>
 endf
